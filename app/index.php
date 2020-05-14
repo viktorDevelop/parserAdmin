@@ -1,19 +1,23 @@
 <?
+namespace app;
+use libs\Database;
+session_start();
+
+ spl_autoload_register(function($clases){
+
+ 	  $file = str_replace('\\', '/', $clases).'.php';
+ 	if (file_exists($file) ) {
+ 		 include  $file;
+ 	}
+ 	  
+ });
+
+
+// include 'libs/Database.php';
+$data =   Database::getInstance();
+
  
-
-spl_autoload_register(function($classes){
-
-	if (file_exists($classes.'.php') ) {
-			include $classes.'.php';
-	}
-}); 
-
-
-include 'libs/Database.php';
-$data = new libs\Database;
-
- 
-$result = $data->select()->from('Person')->execute()->fetchAll();
+// $result = $data->select()->from('Person')->execute()->fetchAll();
 
 echo "<pre>";
 print_r($result);

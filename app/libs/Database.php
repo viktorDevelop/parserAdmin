@@ -10,6 +10,7 @@ class Database
 {
 	private $dbh;
 	 protected static  $instanse;
+	 private $sth;
  
 	 protected function __clone(){}
 	  
@@ -53,7 +54,56 @@ public static function getInstance()
 			
 		}
 
- 
+ public function query($sql)
+	{
+		$this->sth = $this->dbh->prepare($sql);
+		 
+		 
+	}
+	public function exec()
+	{
+		$this->sth->execute();
+		 
+	}
+
+	public function execute($param = [])
+	{
+		$this->sth->execute($param);
+		 
+	}
+
+	public function fetchAll()
+	{
+		 return $this->sth->fetchAll();
+	}
+
+	public function fetchAllColums()
+	{
+		return $this->sth->fetchAll(PDO::FETCH_COLUMN);
+		 
+	}
+
+	public function bindValInt($column,$param)
+	{
+		 
+		$this->sth->bindValue($column,$param,PDO::PARAM_INT);
+	}
+
+	public function bindValStr($column,$param)
+	{
+		 
+		$this->sth->bindValue($column,$param,PDO::PARAM_STR);
+	}
+
+	public function LastInserId()
+	{
+		return $this->dbh->lastInsertId();
+	}
+
+	public function rowCount()
+	{
+		return  $this->sth->rowCount();
+	}
 
 	 
 

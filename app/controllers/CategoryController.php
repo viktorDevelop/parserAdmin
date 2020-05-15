@@ -1,5 +1,7 @@
 <?
 namespace controllers;
+use libs\View;
+use libs\Database;
 
 /**
  * 
@@ -12,7 +14,22 @@ class CategoryController
 
 	public function actionIndex()
 	{
-		echo "cat index";
+		 $view = View::getInstance();
+		 $data = Database::getInstance();
+
+		 $data->query("SELECT * FROM category");
+		  $data->exec();
+		  $categoryData = $data->fetchAll();
+		   
+		  $data->query("SELECT * FROM article ORDER BY id DESC LIMIT 10");
+		  $data->exec();
+		  $listArticles = $data->fetchAll();
+		  
+
+		  
+		 $view->categoryData = $categoryData;
+		 $view->listArticles = $listArticles;
+		 $view->load('template/blog');
 	}
 
 

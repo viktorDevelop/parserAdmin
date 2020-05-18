@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: db
--- Время создания: Май 15 2020 г., 14:11
+-- Время создания: Май 18 2020 г., 14:39
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.4.4
 
@@ -36,6 +36,14 @@ CREATE TABLE `articles` (
   `hidden` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Дамп данных таблицы `articles`
+--
+
+INSERT INTO `articles` (`id`, `title`, `title_en`, `keyword`, `description`, `hidden`) VALUES
+(1, 'php статья 1', 'php-article1', 'keyword php статья 1', 'description php статья 1', 1),
+(2, 'php статья 2', 'php-article2', 'php-article2 keyword', ' php-article2 description', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +67,28 @@ INSERT INTO `category` (`id`, `title`, `title_en`, `id_img`, `hidden`, `permitio
 (1, 'php', 'php', 1, 1, 1),
 (2, 'html', 'html', NULL, 1, 1),
 (3, 'css', 'css', NULL, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `cat_bind_article`
+--
+
+CREATE TABLE `cat_bind_article` (
+  `id` int NOT NULL,
+  `id_cat` int NOT NULL,
+  `id_art` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `cat_bind_article`
+--
+
+INSERT INTO `cat_bind_article` (`id`, `id_cat`, `id_art`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 1),
+(4, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -101,6 +131,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `cat_bind_article`
+--
+ALTER TABLE `cat_bind_article`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `Person`
 --
 ALTER TABLE `Person`
@@ -114,13 +150,19 @@ ALTER TABLE `Person`
 -- AUTO_INCREMENT для таблицы `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `cat_bind_article`
+--
+ALTER TABLE `cat_bind_article`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `Person`

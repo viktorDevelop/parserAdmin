@@ -25,7 +25,7 @@ class CategoryController
 		  $data->exec();
 		  $listArticles = $data->fetchAll();
 		  
-
+		 
 		  
 		 $view->categoryData = $categoryData;
 		 $view->listArticles = $listArticles;
@@ -50,7 +50,7 @@ class CategoryController
 		  $data->exec();
 		  $listArticles = $data->fetchAll();
 
-		  var_dump($listArticles);
+		  // var_dump($listArticles);
 		   
 		   
 		  

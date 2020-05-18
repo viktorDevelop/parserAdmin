@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: db
--- Время создания: Май 18 2020 г., 14:39
+-- Время создания: Май 18 2020 г., 14:53
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.4.4
 
@@ -33,6 +33,7 @@ CREATE TABLE `articles` (
   `title_en` varchar(100) NOT NULL,
   `keyword` varchar(200) NOT NULL,
   `description` varchar(300) NOT NULL,
+  `content` text NOT NULL,
   `hidden` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -40,9 +41,9 @@ CREATE TABLE `articles` (
 -- Дамп данных таблицы `articles`
 --
 
-INSERT INTO `articles` (`id`, `title`, `title_en`, `keyword`, `description`, `hidden`) VALUES
-(1, 'php статья 1', 'php-article1', 'keyword php статья 1', 'description php статья 1', 1),
-(2, 'php статья 2', 'php-article2', 'php-article2 keyword', ' php-article2 description', 1);
+INSERT INTO `articles` (`id`, `title`, `title_en`, `keyword`, `description`, `content`, `hidden`) VALUES
+(1, 'php статья 1', 'php-article1', 'keyword php статья 1', 'description php статья 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1),
+(2, 'php статья 2', 'php-article2', 'php-article2 keyword', ' php-article2 description', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1);
 
 -- --------------------------------------------------------
 
@@ -87,8 +88,7 @@ CREATE TABLE `cat_bind_article` (
 INSERT INTO `cat_bind_article` (`id`, `id_cat`, `id_art`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 2, 1),
-(4, 2, 2);
+(3, 2, 1);
 
 -- --------------------------------------------------------
 

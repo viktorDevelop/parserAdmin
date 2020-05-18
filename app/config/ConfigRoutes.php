@@ -13,7 +13,7 @@ return [
 // '^admin/post/?(?P<action>[a-z-]+)$'=> ['controller'=>'post','prefix'=>'admin'],
 
 // '^post/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'post','action'=>'view'],
-// '^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'view'],
+'^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleList'],
 
 
 '^$'=>['controller'=>'category','action'=>'index'],

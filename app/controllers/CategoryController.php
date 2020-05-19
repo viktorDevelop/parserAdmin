@@ -26,7 +26,11 @@ class CategoryController
 		  $listArticles = $data->fetchAll();
 		  
 		 
-		  $view->title = "Главная";
+		  
+		  $meta =  $this->getMetaTags('php',$categoryData);
+		 $view->title =  $meta['title'];
+		 $view->keywords =  $meta['keyword'];
+		 $view->description =  $meta['description'];
 		  
 		 $view->categoryData = $categoryData;
 		 $view->listArticles = $listArticles;
@@ -53,6 +57,11 @@ class CategoryController
 		  $listArticles = $data->fetchAll();
 
 		  // var_dump($listArticles);
+
+		    $meta =  $this->getMetaTags($title,$categoryData);
+		 $view->title =  $meta['title'];
+		 $view->keywords =  $meta['keyword'];
+		 $view->description =  $meta['description'];
 		   
 		   
 		  
@@ -66,19 +75,25 @@ class CategoryController
 		//http://site.ru/article/php-article
 	public function actionArticleDetail($title)
 	{
-		   $view = View::getInstance();
-		 $data = Database::getInstance();
+		$view = View::getInstance();
+		$data = Database::getInstance();
 
-		  $data->query("SELECT * FROM category");
-		  $data->exec();
-		  $categoryData = $data->fetchAll();
+		$data->query("SELECT * FROM category");
+		$data->exec();
+		$categoryData = $data->fetchAll();
 
 
 
-		 $data->query("SELECT * FROM articles WHERE title_en = :title_en AND hidden !=0");
-		 $data->bindValStr(":title_en",$title);
-		  $data->exec();
-		  $detailArticle = $data->fetchAll();
+		$data->query("SELECT * FROM articles WHERE title_en = :title_en AND hidden !=0");
+		$data->bindValStr(":title_en",$title);
+		$data->exec();
+		$detailArticle = $data->fetchAll();
+
+		$meta =  $this->getMetaTags('php-article1',$detailArticle);
+		    
+		 $view->title =  $meta['title'];
+		 $view->keywords =  $meta['keyword'];
+		 $view->description =  $meta['description'];
 
 		  // var_dump($listArticles);
 		   
@@ -105,13 +120,23 @@ class CategoryController
 		 
 	}
 
-	private function getMetaTags($data = [])
+	private function getMetaTags($title,$data = [])
 	{
-		if (!empty($data)) {
+		if (!empty($title) && !empty($data)) {
 			
-			foreach ($data as $key => $value) {
-				 
-			}
+
+			 foreach ($data as $key => $value) {
+			 	 
+			 	// var_dump($value['title_en']);
+			 	 if ($title == $value['title_en']) {
+
+			 	  	  $res =  $value;
+			 	  	 break;
+
+			 	 }
+			 }
+
+			 return $res;
 		}
 	}
 

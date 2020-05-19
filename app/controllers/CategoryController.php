@@ -26,9 +26,11 @@ class CategoryController
 		  $listArticles = $data->fetchAll();
 		  
 		 
+		  $view->title = "Главная";
 		  
 		 $view->categoryData = $categoryData;
 		 $view->listArticles = $listArticles;
+		 $view->viewsPages = $view->render("template/pages/articleList");
 		 $view->load('template/blog');
 	}
 
@@ -45,7 +47,7 @@ class CategoryController
 
 
 
-		 $data->query("SELECT * FROM articles WHERE articles.id IN (SELECT cat_bind_article.id_art FROM cat_bind_article WHERE cat_bind_article.id_cat = (SELECT category.id  FROM `category` WHERE category.title_en = :title_en)) ");
+		 $data->query("SELECT * FROM articles WHERE articles.id IN (SELECT cat_bind_article.id_art FROM cat_bind_article WHERE cat_bind_article.id_cat = (SELECT category.id  FROM `category` WHERE category.title_en = :title_en))  AND articles.hidden != 0");
 		 $data->bindValStr(":title_en",$title);
 		  $data->exec();
 		  $listArticles = $data->fetchAll();
@@ -56,14 +58,36 @@ class CategoryController
 		  
 		 $view->categoryData = $categoryData;
 		 $view->listArticles = $listArticles;
+		 $view->viewsPages = $view->render("template/pages/articleList");
 		 $view->load('template/blog');
 
 
 	}
 		//http://site.ru/article/php-article
-	public function actionArticleDetail($title = "")
+	public function actionArticleDetail($title)
 	{
-		 
+		   $view = View::getInstance();
+		 $data = Database::getInstance();
+
+		  $data->query("SELECT * FROM category");
+		  $data->exec();
+		  $categoryData = $data->fetchAll();
+
+
+
+		 $data->query("SELECT * FROM articles WHERE title_en = :title_en AND hidden !=0");
+		 $data->bindValStr(":title_en",$title);
+		  $data->exec();
+		  $detailArticle = $data->fetchAll();
+
+		  // var_dump($listArticles);
+		   
+		   
+		  
+		 $view->categoryData = $categoryData;
+		 $view->detailArticle = $detailArticle;
+		 $view->viewsPages = $view->render("template/pages/detailArticle");
+		 $view->load('template/blog');
 	}
 
 	public function add()
@@ -79,6 +103,24 @@ class CategoryController
 	public function delete()
 	{
 		 
+	}
+
+	private function getMetaTags($data = [])
+	{
+		if (!empty($data)) {
+			
+			foreach ($data as $key => $value) {
+				 
+			}
+		}
+	}
+
+	private  function template($TEMPLATE_NAME, $VIEW_NAME)
+	{
+		  $view = View::getInstance();
+		 $data = Database::getInstance();
+
+
 	}
 
 

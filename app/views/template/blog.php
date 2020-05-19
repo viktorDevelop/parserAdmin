@@ -2,7 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>test</title>
+	<title><?=$title;?></title>
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+
+	<meta name="keywords" content="<?=$keywords?>">
+
+	<meta name="description" content="<?=$description?>">
+
+	<meta property="og:title" content="<?=$title?>">
+
+	<meta property="og:type" content="website">
+
+	<meta property="og:image" content="">
+
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -52,32 +65,9 @@
 	<div class="container   " >
 
 		<div class="col-md-12 d-flex">
-			
-				<?foreach($listArticles as $item):?>
-
-					<div class="col-md-4 ">
-
-					
-
-						<div class="card">
-						  <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title"> <?=$item['title']?></h4>
-						    <p class="card-text">
-						      	<?=mb_strimwidth($item['content'], 0, 30," ... ")?>
-						    </p>
-						    <a href="#!" class="btn btn-primary">Go somewhere</a>
-						  </div>
-						</div>
-
-					</div>
-				<?endforeach?>
+			<?=$viewsPages?>
 		</div>
-
-
 	</div>
- 	
-
 
 
 

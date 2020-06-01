@@ -13,8 +13,7 @@ class CategoryController extends FrontController
 	public function actionIndex()
 	{
 		 
-		$this->view->content = $this->view->loadViewsPage('index');
-		$this->view->loadTemplate('blog');
+		
 	}
 
 
@@ -27,6 +26,12 @@ class CategoryController extends FrontController
 	public function actionArticleDetail($title = "")
 	{
 		 
+	}
+
+	public function actionAddView($value='')
+	{
+		 $this->view->content = $this->view->loadViewsPage('index');
+		$this->view->loadTemplate('blog');
 	}
 
 	public function actionAdd()

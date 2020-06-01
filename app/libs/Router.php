@@ -62,7 +62,7 @@ class Router
 		 { 
 
 		 	if ($this->matchRoute()) {
-		 		// var_dump($this->route);
+		 		var_dump($this->route);
 		 	   $controller = 'controllers\\'.$this->route['prefix'].
 	 	  					$this->upperCamelCase($this->route['controller']).'Controller' ;
 	 	  		 

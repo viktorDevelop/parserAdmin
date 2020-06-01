@@ -1,10 +1,10 @@
 <?
 namespace controllers;
-
+use controllers\FrontController;
 /**
  * 
  */
-class CategoryController 
+class CategoryController extends FrontController
 {
 	
 			 
@@ -12,7 +12,9 @@ class CategoryController
 
 	public function actionIndex()
 	{
-		echo "cat index";
+		 
+		$this->view->content = $this->view->loadViewsPage('index');
+		$this->view->loadTemplate('blog');
 	}
 
 
@@ -27,17 +29,17 @@ class CategoryController
 		 
 	}
 
-	public function add()
+	public function actionAdd()
 	{
 		 
 	}
 
-	public function edite()
+	public function actionEdite()
 	{
 		 
 	}
 
-	public function delete()
+	public function actionDelete()
 	{
 		 
 	}

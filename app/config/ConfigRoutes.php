@@ -17,12 +17,19 @@ return [
 
 // '^category/(?P<action>[a-z-]+)/?$'=>["controller"=>"category"],
 
-'^admin/category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'pageViewAdmin',"prefix"=>'admin'],
+// '^admin/category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'pageViewAdmin',"prefix"=>'admin'],
+
+// '^admin/category/(?P<action>[a-z-0-9]+)/?$'=>['controller'=>'category',"prefix"=>'admin'],
+
+
+
 
 '^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleList'],
 
 '^article/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleDetail'],
 
+'^admin/category/?(?P<action>[a-z-0-9]+)/?$'=>['controller'=>'category',"prefix"=>'admin'],
+'^admin/category/?$'=>['controller'=>'category','action'=>'index',"prefix"=>'admin'],
 
 '^$'=>['controller'=>'category','action'=>'index'],
 // '^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$'=>'',

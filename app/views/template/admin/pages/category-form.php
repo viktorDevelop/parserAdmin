@@ -13,6 +13,8 @@
 
 				  </div>
 				</div>
+
+				<button @click="load"> загрузить </button>
 		</div>
 
 
@@ -55,8 +57,17 @@
 				{'id':'3','title':'test222','text':'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}]
 		},
 
-		mouted:{
-
+		mounted(){
+			// axios.post('/admin/category/add', {
+			// 	    firstName: 'Fred',
+			// 	    lastName: 'Flintstone'
+			// 	  })
+			// 	  .then(function (response) {
+			// 	    console.log(response);
+			// 	  })
+			// 	  .catch(function (error) {
+			// 	    console.log(error);
+			// 	  });
 		},
 
 
@@ -111,6 +122,20 @@
 
 				
 
+			},
+
+			load(){
+				
+				axios.post('/admin/category/add', {
+				    firstName: 'Fred',
+				    lastName: 'Flintstone'
+				  })
+				  .then(function (response) {
+				    console.log(response);
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
 			}
 		}
 

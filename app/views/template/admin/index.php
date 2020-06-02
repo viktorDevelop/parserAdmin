@@ -15,6 +15,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 </head>
 <body>
 <!-- <small>Все материалы и цены, размещенные на сайте, носят справочный характер и не являются ни публичной офертой, определяемой положениями Статьи 437(2) Гражданского кодекса Российской Федерации, ни рекламой. Уточнить актуальную информацию о наличии или стоимости того или иного товара вы можете у наших менеджеров.</small>  -->

@@ -75,11 +75,11 @@ class CategoryController extends FrontController
 		 $view->listArticles = $listArticles;
 		 
 		 $this->view->setTmp('blog'); 
-		$this->view->content = $this->view->loadViewsPage("index");
+		$this->view->content = $this->view->loadViewsPage($title['action']);
 		$this->view->loadTemplate();
 
 
-	
+		}
 		//http://site.ru/article/php-article
 	public function actionArticleDetail($title)
 	{

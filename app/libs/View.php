@@ -44,7 +44,7 @@ class View {
 
 	 	 ob_start();
 
-	 	 include $_SERVER['DOCUMENT_ROOT']."/views/template/".$template.'.php';
+	 	 include   $_SERVER['DOCUMENT_ROOT']."/views/template/".$template.'.php';
 	 	 $content = ob_get_contents();
 
 	 		ob_end_clean();
@@ -59,7 +59,7 @@ class View {
 
 	 public function loadTemplate()
 	 {
-	 	 
+	 	
 	 	 echo $this->render($this->tmp.'/index');
 	 }
 

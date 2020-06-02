@@ -48,34 +48,34 @@ class CategoryController extends FrontController
 
 	public function actionArticleList($title)
 	{
-		  $view = View::getInstance();
-		 $data = Database::getInstance();
+		 //  $view = View::getInstance();
+		 // $data = Database::getInstance();
 
-		  $data->query("SELECT * FROM category");
-		  $data->exec();
-		  $categoryData = $data->fetchAll();
+		 //  $data->query("SELECT * FROM category");
+		 //  $data->exec();
+		 //  $categoryData = $data->fetchAll();
 
 
 
-		 $data->query("SELECT * FROM articles WHERE articles.id IN (SELECT cat_bind_article.id_art FROM cat_bind_article WHERE cat_bind_article.id_cat = (SELECT category.id  FROM `category` WHERE category.title_en = :title_en))  AND articles.hidden != 0");
-		 $data->bindValStr(":title_en",$title);
-		  $data->exec();
-		  $listArticles = $data->fetchAll();
+		 // $data->query("SELECT * FROM articles WHERE articles.id IN (SELECT cat_bind_article.id_art FROM cat_bind_article WHERE cat_bind_article.id_cat = (SELECT category.id  FROM `category` WHERE category.title_en = :title_en))  AND articles.hidden != 0");
+		 // $data->bindValStr(":title_en",$title);
+		 //  $data->exec();
+		 //  $listArticles = $data->fetchAll();
 
-		  // var_dump($listArticles);
+		 //  // var_dump($listArticles);
 
-		    $meta =  $this->getMetaTags($title,$categoryData);
-		 $view->title =  $meta['title'];
-		 $view->keywords =  $meta['keyword'];
-		 $view->description =  $meta['description'];
+		 //    $meta =  $this->getMetaTags($title,$categoryData);
+		 // $view->title =  $meta['title'];
+		 // $view->keywords =  $meta['keyword'];
+		 // $view->description =  $meta['description'];
 		   
 		   
 		  
-		 $view->categoryData = $categoryData;
-		 $view->listArticles = $listArticles;
+		 // $view->categoryData = $categoryData;
+		 // $view->listArticles = $listArticles;
 		 
 		 $this->view->setTmp('blog'); 
-		$this->view->content = $this->view->loadViewsPage($title['action']);
+		$this->view->content = $this->view->loadViewsPage('articleList');
 		$this->view->loadTemplate();
 
 

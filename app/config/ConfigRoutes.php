@@ -21,9 +21,9 @@ return [
 
 '^admin/category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'pageViewAdmin',"prefix"=>'admin'],
 
-'^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleList'],
+'^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'articleList'],
 
-'^article/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleDetail'],
+'^article/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'detailArticle'],
 
 
 '^$'=>['controller'=>'category','action'=>'index'],

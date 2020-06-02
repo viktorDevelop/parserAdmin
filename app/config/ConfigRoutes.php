@@ -15,14 +15,13 @@ return [
 // '^post/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'post','action'=>'view'],
 // '^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'view'],
 
-'^category/(?P<action>[a-z-]+)/?$'=>["controller"=>"category"],
+// '^category/(?P<action>[a-z-]+)/?$'=>["controller"=>"category"],
 
+'^admin/category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'pageViewAdmin',"prefix"=>'admin'],
 
 '^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleList'],
 
-
-
-// '^article/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleDetail'],
+'^article/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleDetail'],
 
 
 '^$'=>['controller'=>'category','action'=>'index'],

@@ -73,10 +73,10 @@ class Router
 		 			 
 			 	  if (class_exists($controller)) {
 			 	  	 
-			 	  	 $cObj = new $controller($this->route);
+			 	  	 $cObj = new $controller();
 			 	   
 			 	  	 if (method_exists($controller,$action)) {
-			 	  	 	$cObj->$action();
+			 	  	 	$cObj->$action($this->route);
 			 	  	 	 
 			 	  	 }
 			 	  	 else{

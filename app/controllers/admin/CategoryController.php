@@ -1,5 +1,5 @@
 <?
-namespace controllers;
+namespace controllers\admin;
 use controllers\FrontController;
 /**
  * 
@@ -28,8 +28,29 @@ class CategoryController extends FrontController
 		 
 	}
 
-	 
-	 
+	public function actionPageViewAdmin($value='')
+	{
+		var_dump($value);
+		 
+		 
+		 $this->view->content = $this->view->loadViewsPage('index');
+		$this->view->loadTemplate('blog');
+	}
+
+	public function actionAdd()
+	{
+		 
+	}
+
+	public function actionEdite()
+	{
+		 
+	}
+
+	public function actionDelete()
+	{
+		 
+	}
 
 
 }

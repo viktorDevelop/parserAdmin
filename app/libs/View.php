@@ -17,7 +17,7 @@ class View {
 
 	 private function __construct(){}
 
-	  
+	 private $tmp;
 
 
    public static function getInstance()
@@ -52,13 +52,22 @@ class View {
 	 		return $content;
 	 }
 
-	 public function loadTemplate($template)
+	 public function setTmp($value='')
 	 {
-	 	 echo $this->render($template.'/index');
+	 	 $this->tmp = $value;
+	 }
+
+	 public function loadTemplate()
+	 {
+	 	 
+	 	 echo $this->render($this->tmp.'/index');
 	 }
 
 	 public function loadViewsPage($view)
 	 {
-	 	 return $this->render('blog/pages/'.$view);
+	 	 
+	 	 return $this->render($this->tmp.'/pages/'.$view);
 	 }
+
+	  
 }

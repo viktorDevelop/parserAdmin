@@ -8,33 +8,18 @@ class CategoryController extends FrontController
 {
 	
 			 
-	//http://site.ru/    
-
-	public function actionIndex()
-	{
-		 
-		
-	}
-
-
-	//http://site.ru/category/php 
-	public function actionArticleList($title = "")
-	{
-		 
-	}
-		//http://site.ru/article/php-article
-	public function actionArticleDetail($title = "")
-	{
-		 
-	}
-
+	 
 	public function actionPageViewAdmin($value='')
 	{
-		var_dump($value);
+		var_dump($value['alias']);
 		 
-		 
-		 $this->view->content = $this->view->loadViewsPage('index');
-		$this->view->loadTemplate('blog');
+		$this->view->setTmp('admin') ;
+		$this->view->content = $this->view->loadViewsPage($value['alias']);
+		$this->view->loadTemplate();
+
+
+
+
 	}
 
 	public function actionAdd()

@@ -1,12 +1,13 @@
 <?
 namespace controllers;
+
 use libs\View;
 use libs\Database;
 
-/**
- * 
- */
-class CategoryController 
+
+use controllers\FrontController;
+
+class CategoryController extends FrontController
 {
 	
 			 
@@ -14,6 +15,7 @@ class CategoryController
 
 	public function actionIndex()
 	{
+ 
 		 $view = View::getInstance();
 		 $data = Database::getInstance();
 
@@ -34,12 +36,16 @@ class CategoryController
 		  
 		 $view->categoryData = $categoryData;
 		 $view->listArticles = $listArticles;
-		 $view->viewsPages = $view->render("template/pages/articleList");
-		 $view->load('template/blog');
+		 
+		 $this->view->setTmp('blog'); 
+		$this->view->content = $this->view->loadViewsPage("index");
+		$this->view->loadTemplate();
+
 	}
 
 
 	//http://site.ru/category/php 
+
 	public function actionArticleList($title)
 	{
 		  $view = View::getInstance();
@@ -67,11 +73,13 @@ class CategoryController
 		  
 		 $view->categoryData = $categoryData;
 		 $view->listArticles = $listArticles;
-		 $view->viewsPages = $view->render("template/pages/articleList");
-		 $view->load('template/blog');
+		 
+		 $this->view->setTmp('blog'); 
+		$this->view->content = $this->view->loadViewsPage("index");
+		$this->view->loadTemplate();
 
 
-	}
+	
 		//http://site.ru/article/php-article
 	public function actionArticleDetail($title)
 	{
@@ -105,20 +113,8 @@ class CategoryController
 		 $view->load('template/blog');
 	}
 
-	public function add()
-	{
-		 
-	}
-
-	public function edite()
-	{
-		 
-	}
-
-	public function delete()
-	{
-		 
-	}
+	 
+	 
 
 	private function getMetaTags($title,$data = [])
 	{

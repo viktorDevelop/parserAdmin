@@ -17,7 +17,7 @@ class View {
 
 	 private function __construct(){}
 
-	  
+	 private $tmp;
 
 
    public static function getInstance()
@@ -44,7 +44,7 @@ class View {
 
 	 	 ob_start();
 
-	 	 include $_SERVER['DOCUMENT_ROOT']."/views/".$template.'.php';
+	 	 include $_SERVER['DOCUMENT_ROOT']."/views/template/".$template.'.php';
 	 	 $content = ob_get_contents();
 
 	 		ob_end_clean();
@@ -52,8 +52,22 @@ class View {
 	 		return $content;
 	 }
 
-	 public function load($template)
+	 public function setTmp($value='')
 	 {
-	 	 echo $this->render($template);
+	 	 $this->tmp = $value;
 	 }
+
+	 public function loadTemplate()
+	 {
+	 	 
+	 	 echo $this->render($this->tmp.'/index');
+	 }
+
+	 public function loadViewsPage($view)
+	 {
+	 	 
+	 	 return $this->render($this->tmp.'/pages/'.$view);
+	 }
+
+	  
 }

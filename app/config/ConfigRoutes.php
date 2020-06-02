@@ -17,6 +17,14 @@ return [
 
 '^article/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleDetail'],
 
+// '^category/(?P<action>[a-z-]+)/?$'=>["controller"=>"category"],
+
+'^admin/category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'pageViewAdmin',"prefix"=>'admin'],
+
+'^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleList'],
+
+'^article/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'ArticleDetail'],
+
 
 '^$'=>['controller'=>'category','action'=>'index'],
 // '^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$'=>'',

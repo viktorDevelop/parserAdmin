@@ -14,7 +14,7 @@
 				  </div>
 				</div>
 
-				<button @click="load"> загрузить </button>
+				 
 		</div>
 
 
@@ -52,22 +52,29 @@
 			title:null,
 			text:null,
 			 
-			category:[{'id':'1','title':'test','text':'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-				{'id':'2','title':'test111','text':'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-				{'id':'3','title':'test222','text':'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}]
+			category:null
 		},
 
 		mounted(){
-			// axios.post('/admin/category/add', {
+
+			 
+			// axios.post('/admin/category/GetCategory', {
 			// 	    firstName: 'Fred',
 			// 	    lastName: 'Flintstone'
 			// 	  })
 			// 	  .then(function (response) {
-			// 	    console.log(response);
+			// 	  	this.category = response.data
+			// 	    // console.log(response.data);
 			// 	  })
 			// 	  .catch(function (error) {
 			// 	    console.log(error);
 			// 	  });
+
+			// 	  console.log(this.category)
+
+			axios
+			      .post('/admin/category/GetCategory')
+			      .then(response => (this.category = response.data));
 		},
 
 
@@ -86,7 +93,7 @@
 
 				 // console.log(this.category)
 				 
-				 //this.category.splice(index,1)
+				 this.category.splice(index,1)
 				
 			},
 
@@ -124,19 +131,7 @@
 
 			},
 
-			load(){
-				
-				axios.post('/admin/category/add', {
-				    firstName: 'Fred',
-				    lastName: 'Flintstone'
-				  })
-				  .then(function (response) {
-				    console.log(response);
-				  })
-				  .catch(function (error) {
-				    console.log(error);
-				  });
-			}
+			 
 		}
 
 

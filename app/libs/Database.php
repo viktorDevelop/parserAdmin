@@ -74,7 +74,12 @@ public static function getInstance()
 
 	public function fetchAll()
 	{
-		 return $this->sth->fetchAll();
+		 return $this->sth->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function fetch()
+	{
+			return $this->sth->fetch(PDO::FETCH_ASSOC);
 	}
 
 	public function fetchAllColums()

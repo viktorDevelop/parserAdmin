@@ -1,4 +1,4 @@
-<div id="app" class="container  " >
+<div id="app"   >
 
 		<div class="col-md-12  d-flex flex-wrap"> 
 		 	
@@ -19,7 +19,8 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						    <tr v-for="  (items,index) in category">
+						  	<!-- class="table-warning" -->
+						    <tr v-for="  (items,index) in category" >
 						      <td>{{items.id}}</td>
 						      <td>{{items.title}}</td>
 						      <td><button class="btn btn-primary" @click="edite(items.id,index)" >edite</button></td>
@@ -34,12 +35,20 @@
 						</table>
 				</div>
 
-				<div class="col-md-4"> 
+				<div class="col-md-8"> 
 			 		 <div class="card">
 
-						  <div class="card-body">
-						     	<div class="mb-3"><input type="text" v-model = "title" placeholder="title" ></div>
-						     	<div class="mb-3" > <textarea v-model="text" cols="30" rows="10"></textarea></div>
+						  <div class="card-body ">
+						     	<div class="mb-3"><input class="form-control"  type="text" v-model = "title" placeholder="title" ></div>
+
+								<div class="mb-3"><input class="form-control"  type="text" v-model = "title_en" placeholder="title_en" ></div>
+
+						     	 
+						     	<div class="mb-3" > <textarea class="form-control" v-model="text" cols="30" rows="10"></textarea></div>
+
+					     		<div class="mb-3" > <textarea class="form-control" v-model="keyword" placeholder="keyword"  cols="30" rows="10"></textarea></div>
+
+					     		<div class="mb-3" > <textarea class="form-control" v-model="description" placeholder="description" cols="30" rows="10"></textarea></div>
 
 						  		<button class="btn btn-primary" @click="add">save</button>
 
@@ -92,7 +101,7 @@
 
 
 		computed:{
-			 
+			  
 		},
 
 		methods:{

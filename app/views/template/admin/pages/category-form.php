@@ -2,39 +2,52 @@
 
 		<div class="col-md-12  d-flex flex-wrap"> 
 		 	
-		<div class="col-md-4"> 
-	 		 <div class="card">
+		
 
-				  <div class="card-body">
-				     	<div class="mb-3"><input type="text" v-model = "title" placeholder="title" ></div>
-				     	<div class="mb-3" > <textarea v-model="text" cols="30" rows="10"></textarea></div>
 
-				  		<button class="btn btn-primary" @click="add">save</button>
+		 		<div class="col-md-4" >  
+			 		  
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>id</th>
+						      <th> title </th>
+						      <th></th>
+						      <th></th>
+						      
+						       
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr v-for="  (items,index) in category">
+						      <td>{{items.id}}</td>
+						      <td>{{items.title}}</td>
+						      <td><button class="btn btn-primary" @click="edite(items.id,index)" >edite</button></td>
+					  		 
+					  		<td><button class="btn btn-primary" @click="deleteCategory(index)">delete</button></td>
+						  		
 
-				  </div>
+						  		
+						    </tr>
+						     
+						  </tbody>
+						</table>
 				</div>
 
-				 
-		</div>
-
-
-		 		<div class="col-md-4"  v-for="  (items,index) in category">  
+				<div class="col-md-4"> 
 			 		 <div class="card">
-						  <!-- <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap"> -->
-						  <div class="card-body">
-						    <h4 class="card-title" > {{items.title}} id {{items.id}} <!-- {{title}}  --></h4>
-						    <p class="card-text">
-						      {{items.text}}
 
-						      {{index}}
-						    </p>
-						  		 
-						  		<button class="btn btn-primary" @click="edite(items.id,index)" >edite</button>
-						  		<button class="btn btn-primary" @click="deleteCategory(index)">delete</button>
+						  <div class="card-body">
+						     	<div class="mb-3"><input type="text" v-model = "title" placeholder="title" ></div>
+						     	<div class="mb-3" > <textarea v-model="text" cols="30" rows="10"></textarea></div>
+
+						  		<button class="btn btn-primary" @click="add">save</button>
+
 						  </div>
-						</div>
+					</div>
+ 
 				</div>
-		 	 
+
 
 		 </div>
 	</div>
@@ -72,8 +85,8 @@
 
 			// 	  console.log(this.category)
 
-			axios
-			      .post('/admin/category/GetCategory')
+			 
+			      axios.post('/admin/category/GetCategory')
 			      .then(response => (this.category = response.data));
 		},
 

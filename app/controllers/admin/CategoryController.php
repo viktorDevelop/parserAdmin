@@ -14,8 +14,14 @@ class CategoryController extends FrontController
 	 	 // var_dump($value['alias']);
 		 
 		$this->view->setTmp('admin') ;
-		$this->view->content = $this->view->loadViewsPage('category-form');
+		$this->view->content = $this->view->loadViewsPage('userList');
 		$this->view->loadTemplate();
+
+		// $articleModel = $this->classLoad->models('article');
+		// $articleModel->getArticleList(['limit'=>10,'offset'=>'1','ORDER_BY'=>"DESC"]);
+		// $articleModel->get_keyword();
+		// $articleModel->get_descrip();
+		// $articleModel->get_title();
 	 }		 
 	 
 	 
@@ -25,10 +31,10 @@ class CategoryController extends FrontController
 			  exit();
 			}
 		else{
-			$this->db->query("SELECT * FROM category");
+			$this->db->query("SELECT * FROM users");
 			$this->db->exec();
 			$res = $this->db->fetchAll();
-		echo json_encode($res);	 
+			echo json_encode($res);	 
 		}	 
 	 }
 	 
@@ -38,7 +44,7 @@ class CategoryController extends FrontController
 			  exit();
 			}
 		else{
-
+			
 		echo json_encode(['title'=>'titletest']);	 
 		}	
 
@@ -54,5 +60,5 @@ class CategoryController extends FrontController
 		 
 	}
 
-
+	 
 }

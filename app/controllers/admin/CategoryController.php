@@ -31,10 +31,7 @@ class CategoryController extends FrontController
 			  exit();
 			}
 		else{
-			$this->db->query("SELECT * FROM users");
-			$this->db->exec();
-			$res = $this->db->fetchAll();
-			echo json_encode($res);	 
+			$this->getUser();
 		}	 
 	 }
 	 
@@ -45,7 +42,10 @@ class CategoryController extends FrontController
 			}
 		else{
 			
-		echo json_encode(['title'=>'titletest']);	 
+		 	$request = file_get_contents('php://input');
+		 	$res = json_decode($request); 
+		 	 
+		 	echo $res['name'];
 		}	
 
 	}
@@ -58,6 +58,14 @@ class CategoryController extends FrontController
 	public function actionDelete()
 	{
 		 
+	}
+
+	private function getUser()
+	{
+			$this->db->query("SELECT * FROM users");
+			$this->db->exec();
+			$res = $this->db->fetchAll();
+			echo json_encode($res);	  
 	}
 
 	 

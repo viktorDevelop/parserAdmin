@@ -7,19 +7,19 @@
 			 <div class="col-md-6">
 		     	 	<div class="form-group">
 				    <label for="formGroupExampleInput"> фамилия </label>
-				    <input type="text" class="form-control" id="formGroupExampleInput" v-model="userFamaly">
+				    <input type="text" class="form-control"  v-model="userFamaly">
 				  </div>
 				  <div class="form-group">
 				    <label for="formGroupExampleInput2">   имя </label>
-				    <input type="text" class="form-control" id="formGroupExampleInput2" v-model="userName" >
+				    <input type="text" class="form-control"  v-model="userName" >
 				  </div>
 				   <div class="form-group">
 				    <label for="formGroupExampleInput2">   отчество  </label>
-				    <input type="text" class="form-control" id="formGroupExampleInput2" v-model="userSername" >
+				    <input type="text" class="form-control" v-model="userSername" >
 				  </div>
 				   <div class="form-group">
 				    <label for="formGroupExampleInput2">   логин  </label>
-				    <input type="text" class="form-control" id="formGroupExampleInput2"  v-model="userLogin" >
+				    <input type="text" class="form-control"   v-model="userLogin" >
 				  </div>
 
 				  <div class="form-group">

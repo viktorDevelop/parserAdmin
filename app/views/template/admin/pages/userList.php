@@ -105,7 +105,12 @@
 
 				 add(){
 					
+					// var catEdit	 = _.find(this.category,{'id':id})
 					this.userEdit.push({'name':this.userName,
+										'famaly':this.userFamaly,
+										'sername':this.userSername,
+										'login':this.userLogin})
+					this.usersList.push({'name':this.userName,
 										'famaly':this.userFamaly,
 										'sername':this.userSername,
 										'login':this.userLogin})	 

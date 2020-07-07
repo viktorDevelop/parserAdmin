@@ -45,7 +45,22 @@ class CategoryController extends FrontController
 		 	$request = file_get_contents('php://input');
 		 	$res = json_decode($request); 
 		 	 
-		 	echo $res['name'];
+
+			$user = new UserModel;
+			 
+		 	foreach ($res as $key ) {
+		 		 $user->name = $key->name ;
+		 		 $user->famaly = $key->famaly ;
+		 		 $user->login = $key->login ;
+		 		 $user->sername = $key->sername ;
+		 		 $user->password = "";
+		 		 echo $user->insert();
+   
+		 		   
+		 	}
+		  
+
+		 	
 		}	
 
 	}
@@ -60,6 +75,8 @@ class CategoryController extends FrontController
 		 
 	}
 
+	
+ 
 	private function getUser()
 	{
 			$this->db->query("SELECT * FROM users");
@@ -69,4 +86,55 @@ class CategoryController extends FrontController
 	}
 
 	 
+}
+
+/**
+ * 
+ */
+class UserModel 
+{
+	private $data;
+	private $db;
+
+	 public function __set($k,$v)
+	 {
+	 	 $this->data[$k]=$v;
+	 }
+
+
+	function __construct()
+	{
+		  $this->db = Database::getInstance(); 
+	}
+
+	 public  function insert()
+		{
+			 
+
+			 $cols = array_keys($this->data);
+			 $ins = [];
+			$data = [];
+			 //var_dump($this->db->data);
+			foreach ($cols as $key) {
+				 $ins[] = ":".$key;
+				 $data[':'. $key] = $this->data[$key];
+			}
+			 
+			 
+			 
+			  echo	$sql = "INSERT INTO  users ". "
+			 				 (". implode(',', $cols).")
+			 				 VALUES 
+			 				 (".implode(',', $ins).")"; 
+			 
+			 
+			 
+			 
+			$this->db->query($sql); 
+			  $this->db->execute($data);  
+			  return $this->db->LastInserId();
+			 
+			  
+			 
+		}
 }

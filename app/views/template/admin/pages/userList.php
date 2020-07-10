@@ -3,7 +3,7 @@
 <div id="app">
     
 	<div class="container d-flex flex-wrap ">
-		
+		 
 			 <div class="col-md-6">
 		     	 	<div class="form-group">
 				    <label for="formGroupExampleInput"> фамилия </label>
@@ -46,6 +46,7 @@
 			     				<th>отчество</th>
 			     				<th>логин</th>
 			     				<th> удалить </th>
+			     				<th></th>
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -57,7 +58,9 @@
 			     				<td>{{items.name}}</td>
 			     				<td>{{items.sername}}</td>
 			     				<td>{{items.login}}</td>
-			     				<td> <button class="form-control btn btn-primary">удалить</button> </td>
+			     				<td> <button class="form-control btn btn-primary" @click="delet(items.id)">удалить</button> </td>
+
+			     				<td><a v-href="/admin/category/test/title/{{items.famaly}}"  >test</a></td>
 		     					 
 		     				</tr>
 						  </tbody>
@@ -119,16 +122,15 @@
 			      .then(response => ( response.data)).catch(function(error){console.log(error)});
 				},
 
-				delete(){
-
+				delet(id){
+					 axios.post('/admin/category/delete',{'id':id})
+			      		.then(response => (response.data)).catch(function(error){console.log(error)});
 				},
 
 				showEdit(){
 
 				},
-				showEdit(){
-
-				},
+				 
 
 
 			},

@@ -30,16 +30,7 @@ public static function getInstance()
 		    }
 
 
-
-	// function __construct()
-	// {
-	// 	try {
- //   		 $this->dbh = new PDO('mysql:host=db;dbname=myDb;charset=utf8', 'user', 'test');
-	// 	} catch (PDOException $e) {
-	// 	    die('Подключение не удалось: ' . $e->getMessage());
-	// 	}
-	// }
-
+ 
     private function __construct()
 		{
 			$configDB = include_once  'config/configDB.php';

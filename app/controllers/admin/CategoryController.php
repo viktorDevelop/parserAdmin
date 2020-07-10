@@ -71,8 +71,13 @@ class CategoryController extends FrontController
 	}
 
 	public function actionDelete()
-	{
-		 
+	{	
+		$user = new UserModel;
+		$request = file_get_contents('php://input');
+		$res = json_decode($request,TRUE); 
+
+		echo $user->delete($res['id']);
+		 print_r($res);
 	}
 
 	
@@ -137,4 +142,34 @@ class UserModel
 			  
 			 
 		}
+
+	public function update()
+		{
+			 $cols = array_keys($this->data);
+
+			 foreach ($cols as $key) {
+				  
+				 $data[':'.$key] = $this->data[$key];
+				$up[] = $key.'=:'.$key;
+
+			 	 
+			}
+	 		
+			  $sql = "UPDATE " .static::getTable(). " SET  ".implode(',', $up). " WHERE id = :id";
+			  
+			  $this->db->query($sql); 
+			  $this->db->execute($data);  
+			  return $this->db->LastInserId();
+	 		 
+
+		}
+
+	public function delete($id){
+
+			 $sql = "DELETE FROM users WHERE id = :id";
+			  $this->db->query($sql); 
+			  $this->db->bindValInt(':id',$id);
+			 $this->db->exec();  
+			 
+	}
 }

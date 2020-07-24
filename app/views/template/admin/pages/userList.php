@@ -60,7 +60,7 @@
 			     				<td>{{items.login}}</td>
 			     				<td> <button class="form-control btn btn-primary" @click="delet(items.id)">удалить</button> </td>
 
-			     				<td><a v-href="/admin/category/test/title/{{items.famaly}}"  >test</a></td>
+			     				 
 		     					 
 		     				</tr>
 						  </tbody>

@@ -45,22 +45,7 @@ class CategoryController extends FrontController
 		 	$request = file_get_contents('php://input');
 		 	$res = json_decode($request); 
 		 	 
-
-			$user = new UserModel;
-			 
-		 	foreach ($res as $key ) {
-		 		 $user->name = $key->name ;
-		 		 $user->famaly = $key->famaly ;
-		 		 $user->login = $key->login ;
-		 		 $user->sername = $key->sername ;
-		 		 $user->password = "";
-		 		 echo $user->insert();
-   
-		 		   
-		 	}
-		  
-
-		 	
+		 	echo $res['name'];
 		}	
 
 	}
@@ -80,8 +65,6 @@ class CategoryController extends FrontController
 		 print_r($res);
 	}
 
-	
- 
 	private function getUser()
 	{
 			$this->db->query("SELECT * FROM users");
@@ -90,7 +73,7 @@ class CategoryController extends FrontController
 			echo json_encode($res);	  
 	}
 
-	 
+ 
 }
 
 /**
@@ -172,4 +155,5 @@ class UserModel
 			 $this->db->exec();  
 			 
 	}
+ 
 }

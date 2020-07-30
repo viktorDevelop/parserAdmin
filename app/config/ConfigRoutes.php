@@ -15,8 +15,14 @@ return [
 // '^post/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'post','action'=>'view'],
 // '^category/(?P<alias>[a-z-0-9]+)/?$'=>['controller'=>'category','action'=>'view'],
 
-
 '^$'=>['controller'=>'category','action'=>'index'],
+
+'^(?P<controller>[a-z-0-9]+)/?$'=>['action'=>'index'],
+
+'^(?P<controller>[a-z-0-9]+)/?(?P<action>[a-z-0-9]+)/?$'=>[],
+
+'^(?P<controller>[a-z-0-9]+)/?(?P<action>[a-z-0-9]+)/?(?P<alias>[a-z-0-9]+)/?$'=>[],
+
 // '^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$'=>'',
 
 		];

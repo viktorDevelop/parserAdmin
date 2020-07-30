@@ -27,7 +27,7 @@ class CategoryController
 		 
 	}
 
-	public function add()
+	public function actionAdd()
 	{
 		 
 	}

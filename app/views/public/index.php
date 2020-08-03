@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>test</title>
+	<title><?=$title?></title>
 </head>
 <body>
-	<? print_r($category) ?>
+
+	<?//print_r($arResult);?>
+	 <?=$views;?>
 </body>
 </html>

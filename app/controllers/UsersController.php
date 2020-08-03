@@ -1,10 +1,11 @@
 <?
 namespace controllers;
+use controllers\FrontController;
 
 /**
  * 
  */
-class UsersController  
+class UsersController  extends FrontController
 {
 	
 	 private function Auth($value='')

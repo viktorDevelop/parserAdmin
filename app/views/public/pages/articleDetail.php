@@ -1,0 +1,1 @@
+articleDetail.php

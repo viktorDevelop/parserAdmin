@@ -1,1 +1,5 @@
-<?print_r($pageData);?>
+<?//print_r($ViewData);?>
+
+<?foreach($ViewData as $items):?>
+	<div><?=$items['title'];?></div>
+<?endforeach?>

@@ -20,9 +20,12 @@ class CategoryController extends FrontController
 
 
 	//http://site.ru/category/php 
-	public function actionPages($title = "")
+	public function actionPages($title_en = "")
 	{
-		echo $title; 
+		 $article = new article();
+		$this->template('articleList',$article->getList($title_en));
+
+		 
 	}
 		//http://site.ru/article/php-article
 	public function actionArticleDetail($title = "")
@@ -48,10 +51,10 @@ class CategoryController extends FrontController
 
 	private function template($page,$data)
 	{
+		 $category = new category;
 		 
-		 
-		$this->view->pageData = $data;
-		 // $this->view->components = $this->components('menu','top');
+		$this->view->ViewData = $data;
+		$this->view->category = $category;	 
 		$this->view->views =  $this->view->render('public/pages/'.$page);
 		$this->view->load('public/index');
 
@@ -94,8 +97,35 @@ class Article
 		 $this->db->exec();
 		return    $this->db->fetchAll();
 	}
+ 
 
-	 
+}
+
+
+class Category 
+{
+	
+	public $title;
+	public $keyword;
+	public $description;
+	public $full_text;
+	public $preview_text;
+	public $hidden;
+
+	private $db;
+
+	function __construct()
+	{
+		 $this->db = Database::getInstance();
+	}
+
+	public function getMenu($value='')
+	{
+		 $this->db->query('SELECT * FROM category');
+		 $this->db->exec();
+		 return $this->db->fetchAll();
+	}
+
 
 
 }

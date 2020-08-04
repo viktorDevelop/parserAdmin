@@ -76,7 +76,7 @@ class Router
 			 	  	 $cObj = new $controller($this->route);
 			 	   
 			 	  	 if (method_exists($controller,$action)) {
-			 	  	 	$cObj->$action();
+			 	  	 	$cObj->$action($this->route['alias']);
 			 	  	 	 
 			 	  	 }
 			 	  	 else{

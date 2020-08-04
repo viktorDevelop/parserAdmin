@@ -7,6 +7,13 @@
 <body>
 
 	<?//print_r($arResult);?>
+
+		<ul>
+			<?foreach($category->getMenu() as $items):?>
+				<li><a href="/category/<?=$items['title_en'];?>"> <?=$items['title']?></a></li>
+			<?endforeach?>
+		</ul>
+
 	 <?=$views;?>
 </body>
 </html>

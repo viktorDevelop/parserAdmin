@@ -12,15 +12,17 @@ class CategoryController extends FrontController
 	{
 		 
 		$article = new article();
-		var_dump($article->getList());
-		$this->template('articleList',[]);
+
+		// var_dump($article->getList('css'));
+	 
+		$this->template('articleList',$article->getList());
 	}
 
 
 	//http://site.ru/category/php 
-	public function actionArticleList($title = "")
+	public function actionPages($title = "")
 	{
-		 
+		echo $title; 
 	}
 		//http://site.ru/article/php-article
 	public function actionArticleDetail($title = "")
@@ -33,7 +35,7 @@ class CategoryController extends FrontController
 		 
 	}
 
-	public function edite()
+	public function actionEdite()
 	{
 		 
 	}
@@ -46,9 +48,9 @@ class CategoryController extends FrontController
 
 	private function template($page,$data)
 	{
-		// $this->section = new category('menu',['TYPE'=> "TOP",'TEMPLATE'=>'PUBLIC']);
 		 
-		 // $this->view->pageData = $data;
+		 
+		$this->view->pageData = $data;
 		 // $this->view->components = $this->components('menu','top');
 		$this->view->views =  $this->view->render('public/pages/'.$page);
 		$this->view->load('public/index');
@@ -59,9 +61,7 @@ class CategoryController extends FrontController
 }
 
 
-/**
- * 
- */
+ 
 class Article 
 {
 	public $title;
@@ -79,17 +79,23 @@ class Article
 	}
 
 
-	public function getList()
+	public function getList($title_en = '')
 	{
-		 $this->db->query('SELECT * FROM article ORDER BY id DESC limit 10 ');
+		if (empty($title_en)) {
+
+			$this->db->query("SELECT * FROM articles  ORDER BY id DESC LIMIT 10");
+		 	$this->db->exec();
+		 	return $this->db->fetchAll();
+		}else{
+
+		}
+		 $this->db->query("  SELECT * FROM articles WHERE articles.id IN(SELECT id_art FROM `cat_bind_article` WHERE id_cat IN( SELECT category.id FROM category WHERE category.title_en = :title_en)) ");
+		 $this->db->bindValStr(':title_en',$title_en);
 		 $this->db->exec();
-		 return $this->db->FetchAll();
+		return    $this->db->fetchAll();
 	}
 
-	public function getDetail($value='')
-	{
-		 
-	}
+	 
 
 
 }

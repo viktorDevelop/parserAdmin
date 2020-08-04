@@ -19,11 +19,12 @@ return [
 
 '^(?P<controller>[a-z-0-9]+)/?$'=>['action'=>'index'],
 
-'^(?P<controller>[a-z-0-9]+)/?(?P<action>[a-z-0-9]+)/?$'=>[],
+'^(?P<controller>[a-z-0-9]+)/?(?P<alias>[a-z-0-9]+)/?$'=>['action'=>'pages'],
 
 '^(?P<controller>[a-z-0-9]+)/?(?P<action>[a-z-0-9]+)/?(?P<alias>[a-z-0-9]+)/?$'=>[],
 
-// '^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$'=>'',
+
 
 		];
 
+ 

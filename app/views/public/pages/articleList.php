@@ -1,1 +1,1 @@
-<?//print_r($arResult->getList());?>
+<?print_r($pageData);?>

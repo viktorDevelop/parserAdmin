@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title><?=$title?></title>
+	<title><?=$metaData['title']?></title>
+
+
 </head>
 <body>
 
@@ -13,7 +15,7 @@
 				<li><a href="/category/<?=$items['title_en'];?>"> <?=$items['title']?></a></li>
 			<?endforeach?>
 		</ul>
-
+	 
 	 <?=$views;?>
 </body>
 </html>

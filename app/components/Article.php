@@ -37,9 +37,18 @@ class Article
 	public function getArticleDetail($title_en = '')
 	{
 		 $this->db->query("SELECT * FROM articles WHERE title_en = :title_en");
+		 $this->db->bindValStr(':title_en',$title_en);
 		 $this->db->exec();
 		 return $this->db->fetchAll()[0];
 	}
- 
+ 	
+
+ 	public function getMetaData($title_en = '')
+	{
+		$this->db->query('SELECT title,title_en,keyword,description FROM articles WHERE title_en = :title_en');
+		$this->db->bindValStr(':title_en',$title_en);
+		$this->db->exec();
+		return $this->db->fetchAll()[0]; 
+	}
 
 }

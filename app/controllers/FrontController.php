@@ -23,10 +23,10 @@ class FrontController
 
 	public function template($page,$data)
 	{
-		 $category = new category;
 		 
+
 		$this->view->ViewData = $data;
-		$this->view->category = $category;	 
+		$this->view->category = $this->category;	 
 		$this->view->views =  $this->view->render('public/pages/'.$page);
 		$this->view->load('public/index');
 

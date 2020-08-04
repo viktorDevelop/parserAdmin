@@ -7,8 +7,7 @@ class Category
 	public $title;
 	public $keyword;
 	public $description;
-	public $full_text;
-	public $preview_text;
+	 
 	public $hidden;
 
 	private $db;
@@ -20,9 +19,17 @@ class Category
 
 	public function getMenu($value='')
 	{
-		 $this->db->query('SELECT * FROM category');
+		 $this->db->query('SELECT title,title_en FROM category');
 		 $this->db->exec();
 		 return $this->db->fetchAll();
+	}
+
+	public function getMetaData($title_en = '')
+	{
+		$this->db->query('SELECT title,title_en,keyword,description FROM category WHERE title_en = :title_en');
+		$this->db->bindValStr(':title_en',$title_en);
+		$this->db->exec();
+		return $this->db->fetchAll()[0]; 
 	}
 
 

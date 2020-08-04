@@ -24,14 +24,9 @@ class CategoryController extends FrontController
 	{
 		 $article = new article();
 		$this->template('articleList',$article->getList($title_en));
-
-		 
+  
 	}
-		//http://site.ru/article/php-article
-	public function actionArticleDetail($title = "")
-	{
-		 
-	}
+		
 
 	public function actionAdd()
 	{
@@ -96,6 +91,13 @@ class Article
 		 $this->db->bindValStr(':title_en',$title_en);
 		 $this->db->exec();
 		return    $this->db->fetchAll();
+	}
+
+	public function getArticleDetail($title_en = '')
+	{
+		 $this->db->query("SELECT * FROM articles WHERE title_en = :title_en");
+		 $this->db->exec();
+		 return $this->db->fetchAll()[0];
 	}
  
 

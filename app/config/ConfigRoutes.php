@@ -17,11 +17,24 @@ return [
 
 '^$'=>['controller'=>'category','action'=>'index'],
 
+
+'^admin$'=>['controller'=>'admin','action'=>'index','prefix'=>'admin'],
+
+'^admin/(?P<controller>[a-z-0-9]+)/?$'=>['action'=>'index',"prefix"=>'admin'],
+
+'^admin/(?P<controller>[a-z-0-9]+)/?(?P<alias>[a-z-0-9]+)/?$'=>['action'=>'pages',"prefix"=>'admin'],
+
+'^admin/(?P<controller>[a-z-0-9]+)/?(?P<action>[a-z-0-9]+)/?(?P<alias>[a-z-0-9]+)/?$'=>["prefix"=>'admin'],
+
+
+
 '^(?P<controller>[a-z-0-9]+)/?$'=>['action'=>'index'],
 
 '^(?P<controller>[a-z-0-9]+)/?(?P<alias>[a-z-0-9]+)/?$'=>['action'=>'pages'],
 
 '^(?P<controller>[a-z-0-9]+)/?(?P<action>[a-z-0-9]+)/?(?P<alias>[a-z-0-9]+)/?$'=>[],
+
+
 
 
 

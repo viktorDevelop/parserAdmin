@@ -13,9 +13,10 @@ class FrontController
 
 	public $article;
 	public $category;
-
+	 
 	function __construct()
 	{
+		 
 		 $this->view = View::getInstance();
 		 $this->article = new Article;
 		 $this->category = new Category;

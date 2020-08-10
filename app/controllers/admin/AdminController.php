@@ -17,7 +17,7 @@ class AdminController extends FrontController
 
 	public function actionAuth()
 	{
-		 
+		$this->template('authForm'); 
 	}
 
 	public function template($page,$data = [])

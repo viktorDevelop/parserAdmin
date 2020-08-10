@@ -24,26 +24,7 @@ class CategoryController extends FrontController
 		$this->template('articleList',$this->article->getList($title_en));
   
 	}
-		
-
-	public function actionAdd()
-	{
-		 
-	}
-
-	public function actionEdite()
-	{
-		 
-	}
-
-	public function delete()
-	{
-		 
-	}
-
-
 	 
-
 
 }
 

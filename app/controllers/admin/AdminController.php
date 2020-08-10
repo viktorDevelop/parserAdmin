@@ -3,20 +3,31 @@ namespace controllers\admin;
 use controllers\FrontController;
 
  
-class AdminController  extends FrontController
+class AdminController extends FrontController
 {
 	
-	function __construct()
-	{
+	 
 	
+	public function actionIndex()
+	{
+		  
+		  $this->template('category');
 
 	}
 
-	
-	public function actionIndex($value='')
+	public function actionAuth()
 	{
 		 
 	}
+
+	public function template($page,$data = [])
+	{
+		  
+		$this->view->viewPage =  $this->view->render('admin/pages/'.$page);
+		$this->view->load('admin/index');
+
+	}
+
 
 		 
 }

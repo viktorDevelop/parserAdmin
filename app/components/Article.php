@@ -51,4 +51,20 @@ class Article
 		return $this->db->fetchAll()[0]; 
 	}
 
+
+	public function add()
+	{
+		 
+	}
+
+	public function edite()
+	{
+		 
+	}
+
+	public function delete($value='')
+	{
+		 
+	}
+
 }

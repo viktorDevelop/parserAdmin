@@ -9,7 +9,7 @@ use libs\View;
  */
 class FrontController  
 {
-	public $view;
+	public  $view;
 
 	public $article;
 	public $category;

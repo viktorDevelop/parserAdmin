@@ -11,9 +11,9 @@ class CategoryController  extends AdminController
 	public function actionIndex()
 	{	
 		 
-		 $this->checkAuth();
-		 print_r($_SESSION);
-		// echo $this->auth->user();
+		 // $this->checkAuth();
+		  
+		
 		$this->template('category');
 	}
   

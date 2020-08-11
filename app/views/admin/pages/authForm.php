@@ -39,8 +39,12 @@
 
         
         axios.post('/admin/admin/Auth',{"login":this.login,'password':this.password})
-            .then(response => (response.data)).catch(function(error){console.log(error)});
+            .then(response => (window.location.href = "/admin/index/")).catch(function(error){console.log(error)});
+
+
       }
+
+
 
 
     }

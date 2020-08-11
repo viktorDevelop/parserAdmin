@@ -7,7 +7,7 @@ return [
 '^$'=>['controller'=>'category','action'=>'index'],
 
 
-'^admin$'=>['controller'=>'admin','action'=>'auth','prefix'=>'admin'],
+'^admin$'=>['controller'=>'admin','action'=>'AuthForm','prefix'=>'admin'],
 
 '^admin/index'=>["prefix"=>'admin','controller'=>'admin','action'=>'index'],
 

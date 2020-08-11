@@ -2,6 +2,7 @@
 namespace controllers\admin;
 use controllers\FrontController;
 use components\Auth;
+use components\User;
  
 class AdminController extends FrontController
 {
@@ -17,17 +18,33 @@ class AdminController extends FrontController
 		 
 	}
 
-	public function actionAuth()
+	public function actionAuthForm($value='')
 	{
 		$this->template('authForm'); 
+	}
+
+	public function actionAuth()
+	{
+		
 		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 			  exit();
-			}
-		$request = file_get_contents('php://input');
-		$res = json_decode($request,TRUE); 
-		print_r($res);
+			 }
 
+				$request = file_get_contents('php://input');
+			$res = json_decode($request,TRUE); 
+			 
 
+		    $user = new User;
+		    $userAuth = $user->getUserAuth($res['login'],md5($res['password']));
+		    // var_dump($userAuth);
+			if (!empty($userAuth)) {
+			
+			 $this->auth->autorize($userAuth['login']);
+			 echo json_encode(['auth'=>'true']);
+
+				}
+			 
+		  
 		 
 	}
 

@@ -6,23 +6,26 @@ use components\Auth;
 class AdminController extends FrontController
 {
 	
+	  
 	 
-	function __construct($route)
-	{
-		$this->auth = new Auth; 
-		$this->checkAutorization();   
-	}
-
 
 	public function actionIndex()
 	{
-		 
+
+		
+		 $this->checkAuth();
 		 
 	}
 
 	public function actionAuth()
 	{
 		$this->template('authForm'); 
+
+		if ($_REQUEST['POST']) {
+			
+		}
+
+		 
 	}
 
 	public function template($page,$data = [])
@@ -33,62 +36,26 @@ class AdminController extends FrontController
 
 	}
 
-	 protected function headerLocate($value)
-	 {
-	 	  $url = 'location:'.URL.$value;
-	 	header($url);
-	 	   
-	 }
-
-	 public function checkAutorization()
-	 {
-	 	if ($this->auth->user() !==null) {
+	public function checkAuth()
+	{
+		 if ($this->auth->user() !==null) {
 	 		 $this->auth->autorize($this->auth->user());
 
 	 	}
 
-	 	if (!$this->auth->autorized() && $this->route['action']!=='login') {
+	 	if (!$this->auth->autorized() && $this->route['action']!=='auth') {
 		 	 
-		 	$this->headerLocate('admin/login');
+		 	header("location:/admin/");
 		 	exit;
 		 }
-	 	 
-	 	
-	 }
-
-	 public function actionLogin()
-	{
-		  
-		 if (isset($_POST['enter'])) {
-
-			 	$UserModel = $this->classLoad->models('UserModel')->getUserInfo($_POST['login'],md5($_POST['password'])); 
-
-			 	 if (!empty($UserModel)) {
-			 	 $user = $UserModel[0];
-			 	 	if ($user['role']==='admin') {
-			 	 		$hash = md5($user['id'].$user['login'].$user['password'].$this->auth->salt());
-			 	 		$this->auth->autorize($hash);
-			 	 		 $this->headerLocate('admin');
-			 	 		 
-			 	 	}
-			 	 
-				}else{
-					$this->view->error = "не верные данные";	
-			}
-		 }
-		
-		
-		 
-		 
-		 
- 		$this->view->load('admin/signIn');
 	}
 
-	public function actionExit()
+	public function actionExit($value='')
 	{
-		 $this->auth->unAutorized();
-		$this->headerLocate('admin');
+	 	$this->auth->unAutorized();
 	}
+
+	   
 
 		 
 }

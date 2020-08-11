@@ -2,6 +2,7 @@
 namespace controllers;
 use components\Article;
 use components\Category;
+use components\Auth;
 
 use libs\View;
 /**
@@ -13,10 +14,13 @@ class FrontController
 
 	public $article;
 	public $category;
+	public $route;
+	 public $auth;
 	 
-	function __construct()
+	function __construct($route)
 	{
-		 
+		 $this->route = $route;
+		 $this->auth = new Auth; 
 		 $this->view = View::getInstance();
 		 $this->article = new Article;
 		 $this->category = new Category;

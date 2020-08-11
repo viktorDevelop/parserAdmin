@@ -10,8 +10,10 @@ class CategoryController  extends AdminController
 
 	public function actionIndex()
 	{	
-		
-		// $this->isAuth();
+		 
+		 $this->checkAuth();
+		 print_r($_SESSION);
+		// echo $this->auth->user();
 		$this->template('category');
 	}
   

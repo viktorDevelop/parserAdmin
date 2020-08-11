@@ -20,10 +20,13 @@ class AdminController extends FrontController
 	public function actionAuth()
 	{
 		$this->template('authForm'); 
+		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+			  exit();
+			}
+		$request = file_get_contents('php://input');
+		$res = json_decode($request,TRUE); 
+		print_r($res);
 
-		if ($_REQUEST['POST']) {
-			
-		}
 
 		 
 	}

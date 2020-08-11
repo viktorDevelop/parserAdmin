@@ -2,7 +2,7 @@
 <div id="app-auth"> 
 <div class="container d-flex justify-content-center">
   <div class="col-md-5">
-    <form class="form-signin">
+     
       <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
@@ -14,8 +14,8 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" @click="test" >Sign in</button>
-     </form>
+      <button class="btn btn-lg btn-primary btn-block" @click="auth" >Sign in</button>
+     
  </div>
 </div>
 
@@ -23,19 +23,23 @@
 
 <script>
   
-  let app = new Vue({
+  var app = new Vue({
 
     el:'#app-auth',
 
     data:{
-
+        login:null,
+        password:null
     },
 
     methods:{
 
 
       auth(){
+
         
+        axios.post('/admin/admin/Auth',{"login":this.login,'password':this.password})
+            .then(response => (response.data)).catch(function(error){console.log(error)});
       }
 
 

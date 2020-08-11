@@ -10,8 +10,9 @@ class CategoryController  extends AdminController
 
 	public function actionIndex()
 	{	
-		 
-
+		
+		// $this->isAuth();
+		$this->template('category');
 	}
   
   	public function actionAdd()

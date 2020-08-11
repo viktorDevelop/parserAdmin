@@ -1,6 +1,6 @@
 <?
 namespace app;
-use libs\Database;
+ 
 use libs\Router;
 session_start();
 
@@ -14,9 +14,6 @@ session_start();
  });
 
 
-// $data =   Database::getInstance();
-
-// echo "<pre>";
-// print_r($result);
+ include 'config/config.php';
 $router = new Router;
 $router->run();

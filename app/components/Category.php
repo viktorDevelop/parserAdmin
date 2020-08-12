@@ -1,21 +1,11 @@
 <?
 namespace components;
-use libs\Database;
-class Category 
+use components\Model;
+ class Category   extends Model
 {
 	
-	public $title;
-	public $keyword;
-	public $description;
 	 
-	public $hidden;
-
-	private $db;
-
-	function __construct()
-	{
-		 $this->db = Database::getInstance();
-	}
+	public static $table = "category";
 
 	public function getMenu($value='')
 	{
@@ -31,6 +21,34 @@ class Category
 		$this->db->exec();
 		return $this->db->fetchAll()[0]; 
 	}
+
+
+	 
+	public function add($value='')
+	{
+		   
+		$res =  $this->insert();
+		if ($res > 0 ) {
+			return "success";
+		}
+		else{
+			return "error";
+		}
+	}
+
+
+	public function edite($value='')
+	{
+
+		return   $this->update();
+	}
+
+	public function delet($id)
+	{
+		 $this->delete($id);
+	}
+
+	 
 
 
 

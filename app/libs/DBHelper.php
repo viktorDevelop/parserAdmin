@@ -1,0 +1,9 @@
+<?
+namespace libs;
+
+ 
+class DBHelper  
+{
+	
+	
+}

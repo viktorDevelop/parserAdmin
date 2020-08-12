@@ -1,15 +1,15 @@
 <?
 namespace components;
 use libs\Database;
-class Component    
+use libs\DBHelper;
+
+
+class Model    
 {
 	 private $data;
-	public  $db;
+	protected  $db;
 
-	 public function __set($k,$v)
-	 {
-	 	 $this->data[$k]=$v;
-	 }
+	  
 
 
 	function __construct()
@@ -17,7 +17,11 @@ class Component
 		  $this->db = Database::getInstance(); 
 	}
 
-	 public  function insert()
+	public function __set($k,$v)
+	 {
+	 	 $this->data[$k]=$v;
+	 }
+	public  function insert()
 		{
 			 
 
@@ -32,23 +36,23 @@ class Component
 			 
 			 
 			 
-			  echo	$sql = "INSERT INTO   ".static::$table. "
+			  	$sql = "INSERT INTO   ". static::$table."
 			 				 (". implode(',', $cols).")
 			 				 VALUES 
 			 				 (".implode(',', $ins).")"; 
 			 
 			 
+			
 			 
-			 
-			// $this->db->query($sql); 
-			//   $this->db->execute($data);  
-			//   return $this->db->LastInserId();
+			$this->db->query($sql); 
+			  $this->db->execute($data);  
+			  return $this->db->LastInserId();
 			 
 			  
 			 
 		}
 
-	public function update($table)
+	public function update()
 		{
 			 $cols = array_keys($this->data);
 
@@ -60,8 +64,8 @@ class Component
 			 	 
 			}
 	 		
-			  $sql = "UPDATE " .static::getTable(). " SET  ".implode(',', $up). " WHERE id = :id";
-			  
+			    $sql = "UPDATE " .static::$table. " SET  ".implode(',', $up). " WHERE id = :id";
+			 
 			  $this->db->query($sql); 
 			  $this->db->execute($data);  
 			  return $this->db->LastInserId();
@@ -71,11 +75,11 @@ class Component
 
 	public function delete($id){
 
-			 $sql = "DELETE FROM users WHERE id = :id";
+			 echo $sql = "DELETE FROM ".static::$table." WHERE id = :id";
 			  $this->db->query($sql); 
 			  $this->db->bindValInt(':id',$id);
 			 $this->db->exec();  
 			 
-	}
+	} 
  
 }

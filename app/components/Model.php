@@ -24,11 +24,10 @@ class Model
 	public  function insert()
 		{
 			 
-
-			 $cols = array_keys($this->data);
-			 $ins = [];
+			$cols = array_keys($this->data);
+			$ins = [];
 			$data = [];
-			 //var_dump($this->db->data);
+			//var_dump($this->db->data);
 			foreach ($cols as $key) {
 				 $ins[] = ":".$key;
 				 $data[':'. $key] = $this->data[$key];
@@ -36,19 +35,14 @@ class Model
 			 
 			 
 			 
-			  	$sql = "INSERT INTO   ". static::$table."
+			echo  	$sql = "INSERT INTO   ". static::$table."
 			 				 (". implode(',', $cols).")
 			 				 VALUES 
 			 				 (".implode(',', $ins).")"; 
-			 
-			 
-			
-			 
-			$this->db->query($sql); 
-			  $this->db->execute($data);  
-			  return $this->db->LastInserId();
-			 
-			  
+			 print_r($data);
+				$this->db->query($sql); 
+				$this->db->execute($data);  
+				return $this->db->LastInserId();
 			 
 		}
 
@@ -58,27 +52,27 @@ class Model
 
 			 foreach ($cols as $key) {
 				  
-				 $data[':'.$key] = $this->data[$key];
+				$data[':'.$key] = $this->data[$key];
 				$up[] = $key.'=:'.$key;
 
 			 	 
 			}
 	 		
-			    $sql = "UPDATE " .static::$table. " SET  ".implode(',', $up). " WHERE id = :id";
-			 
-			  $this->db->query($sql); 
-			  $this->db->execute($data);  
-			  return $this->db->LastInserId();
+			$sql = "UPDATE " .static::$table. " SET  ".implode(',', $up). " WHERE id = :id";
+
+			$this->db->query($sql); 
+			$this->db->execute($data);  
+			return $this->db->LastInserId();
 	 		 
 
 		}
 
 	public function delete($id){
 
-			 echo $sql = "DELETE FROM ".static::$table." WHERE id = :id";
-			  $this->db->query($sql); 
-			  $this->db->bindValInt(':id',$id);
-			 $this->db->exec();  
+		$sql = "DELETE FROM ".static::$table." WHERE id = :id";
+		$this->db->query($sql); 
+		$this->db->bindValInt(':id',$id);
+		$this->db->exec();  
 			 
 	} 
  

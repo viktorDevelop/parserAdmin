@@ -1,23 +1,10 @@
 <?
 namespace components;
-use libs\Database;
-class Article 
+ use components\Model;
+class Article  extends Model
 {
-	public $title;
-	public $keyword;
-	public $description;
-	public $full_text;
-	public $preview_text;
-	public $hidden;
-
-	private $db;
-
-	function __construct()
-	{
-		 $this->db = Database::getInstance();
-	}
-
-
+	 
+ 	public static $table = "articles";
 	public function getList($title_en = '')
 	{
 		if (empty($title_en)) {
@@ -54,17 +41,26 @@ class Article
 
 	public function add()
 	{
-		 
+		   
+		 $res =  $this->insert();
+		if ($res > 0 ) {
+			return "success";
+		}
+		else{
+			return "error";
+		}
 	}
 
-	public function edite()
+
+	public function edite($value='')
 	{
-		 
+
+		return   $this->update();
 	}
 
-	public function delete($value='')
+	public function delet($id)
 	{
-		 
+		 $this->delete($id);
 	}
 
 }

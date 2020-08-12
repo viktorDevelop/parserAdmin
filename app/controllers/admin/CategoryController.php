@@ -5,26 +5,12 @@ use \controllers\admin\AdminController;
 class CategoryController  extends AdminController
 {
 	
-			 
-	
-
+	 
 	public function actionIndex()
 	{	
 		 
 		 // $this->checkAuth();
-		
-		
-		  
-  		 
-		echo $this->category->delet('8'); 
 
-		// $this->category->title = "test";
-		// $this->category->title_en = "test";
-		// $this->category->keyword = "test";
-		// $this->category->description = "test";
-		// $this->category->hidden = '1';
-		// echo $this->category->add(); 
-		
 	}
   
   	public function actionAdd()
@@ -50,7 +36,7 @@ class CategoryController  extends AdminController
 	 
 	public function actionDelete()
 	{
-		 
+		$this->category->delet($id);  
 	}
 
 }

@@ -7,7 +7,7 @@ use components\Model;
 	 
 	public static $table = "category";
 
-	public function getMenu($value='')
+	public function getMenu()
 	{
 		 $this->db->query('SELECT title,title_en FROM category');
 		 $this->db->exec();

@@ -11,7 +11,7 @@ class ArticleController  extends AdminController
 	public function actionIndex()
 	{	
 		 
-
+		$this->template('article');
 	}
   
   	public function actionAdd()

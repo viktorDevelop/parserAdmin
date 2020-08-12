@@ -14,13 +14,15 @@ class AdminController extends FrontController
 	{
 
 		
-		 $this->checkAuth();
+		 // $this->checkAuth();
+		 $this->template('indexView');
 		 
 	}
 
 	public function actionAuthForm($value='')
 	{
-		$this->template('authForm'); 
+		// $this->template('authForm'); 
+		$this->view->load('admin/authForm');
 	}
 
 	public function actionAuth()

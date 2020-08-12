@@ -13,8 +13,8 @@ class CategoryController  extends AdminController
 		 
 		 $this->checkAuth();
 		  
-		
 		$this->template('category');
+		
 	}
   
   	public function actionAdd()

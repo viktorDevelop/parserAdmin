@@ -62,31 +62,65 @@
 <script>
 
 	 
-	var app = new Vue({
+	 var app = new Vue({
 
-		el:"#app",
+		el:'#app',
+		data:{
+			 usersList:[],
+			 userAdd:[],
+			 userEdit:[],
+			 userDel:[],
+			 addBtnShow:true,
+			 editeBtnShow:false,
 
-		data:function(){
-			return{
+			 userName:null,
+			 userFamaly:null,
+			 userSername:null,
+			 userLogin:null
 
 
-			}
+
 		},
-
-		computed:{
-
-		},
-
 		methods:{
-			addToTable(obj){
-				console.log(obj)
-			} 
-		},
+				edite(id){
+						alert(id)
+				 	},
+
+				 add(){
+					
+					// var catEdit	 = _.find(this.category,{'id':id})
+					this.userEdit.push({'name':this.userName,
+										'famaly':this.userFamaly,
+										'sername':this.userSername,
+										'login':this.userLogin})
+					this.usersList.push({'name':this.userName,
+										'famaly':this.userFamaly,
+										'sername':this.userSername,
+										'login':this.userLogin})	 
+					console.log(this.userEdit)
+					  axios.post('/admin/category/add',this.userEdit)
+			      .then(response => ( response.data)).catch(function(error){console.log(error)});
+				},
+
+				delet(id){
+					 axios.post('/admin/category/delete',{'id':id})
+			      		.then(response => (response.data)).catch(function(error){console.log(error)});
+				},
+
+				showEdit(){
+
+				},
+				 
+
+
+			},
+
 
 		mounted(){
-
-		}
-	});
+ 
+			      axios.post('/admin/category/GetCategory')
+			      .then(response => (this.usersList = response.data)).catch(function(error){console.log(error)});
+		},
 
 </script>
   

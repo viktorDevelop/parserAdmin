@@ -32,7 +32,7 @@ class AdminController extends FrontController
 			  exit();
 			 }
 
-				$request = file_get_contents('php://input');
+			$request = file_get_contents('php://input');
 			$res = json_decode($request,TRUE); 
 			 
 

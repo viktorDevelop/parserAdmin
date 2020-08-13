@@ -39,7 +39,7 @@ class ArticleController  extends AdminController
 		$this->article->hidden = '1';
 
 
-			echo $this->article->edite();   
+		echo $this->article->edite();   
   	}
 	 
 	public function actionDelete()

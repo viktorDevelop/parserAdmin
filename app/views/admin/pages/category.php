@@ -38,34 +38,7 @@
 
 				<div class="col-md-8"> 
 			 		 
- 					<form-category v-on:add="addToTable"></form-category>
-				</div>
-
-
-		 </div>
-	</div>
-	
-<script>
-
-	Vue.component("form-category",{
-
-		data:function(){
-			return {
-				title:null,
-				title_en:null,
-				keyword:null,
-				description:null
-
-			}
-		},
-
-		methods:{
-			add:function(){
-				 this.$emit('addToTable',{"title":this.title,'title_en':this.title_en})
-			}
-		},
-
-		template:`<div class="card">
+ 					 <div class="card">
 
 						  <div class="card-body ">
 						     	<div class="mb-3"><input class="form-control"  type="text" v-model="title" placeholder="title" ></div>
@@ -79,10 +52,16 @@
 						  		<button class="btn btn-primary" @click="add"> add </button>
 
 						  </div>
-					</div>`
+					</div>
+				</div>
 
-	});
 
+		 </div>
+	</div>
+	
+<script>
+
+	 
 	var app = new Vue({
 
 		el:"#app",

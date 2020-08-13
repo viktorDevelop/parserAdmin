@@ -10,11 +10,30 @@ class CategoryController  extends AdminController
 	{	
 		 
 		 // $this->checkAuth();
+		$this->template('category');
+	}
 
+
+	public function getCategory()
+	{
+		 	if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+			  exit();
+			 }
+
+			$request = file_get_contents('php://input');
+			$res = json_decode($request,TRUE); 
+			 
 	}
   
   	public function actionAdd()
-  	{
+  	{	
+		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+		  exit();
+		 }
+
+		$request = file_get_contents('php://input');
+		$res = json_decode($request,TRUE); 
+			 
   		$this->category->title = "test";
 		$this->category->title_en = "test";
 		$this->category->keyword = "test";

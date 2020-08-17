@@ -14,6 +14,13 @@ use components\Model;
 		 return $this->db->fetchAll();
 	}
 
+	public function get()
+	{
+		 $this->db->query("SELECT * FROM category");
+		 $this->db->exec();
+		 return $this->db->fetchAll();
+	}
+
 	public function getMetaData($title_en = '')
 	{
 		$this->db->query('SELECT title,title_en,keyword,description FROM category WHERE title_en = :title_en');
@@ -29,7 +36,7 @@ use components\Model;
 		   
 		$res =  $this->insert();
 		if ($res > 0 ) {
-			return "success";
+			return $res;
 		}
 		else{
 			return "error";

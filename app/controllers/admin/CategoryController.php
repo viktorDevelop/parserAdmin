@@ -14,32 +14,37 @@ class CategoryController  extends AdminController
 	}
 
 
-	public function getCategory()
+	public function actionGetCategory()
 	{
 		 	if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 			  exit();
 			 }
 
-			$request = file_get_contents('php://input');
-			$res = json_decode($request,TRUE); 
+			// $request = file_get_contents('php://input');
+			// $res = json_decode($request,TRUE); 
+			 $res =  $this->category->get();
+			 echo json_encode($res);
+			 // print_r($res);
 			 
 	}
   
   	public function actionAdd()
   	{	
 		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-		  exit();
+		  header('location:/admin/');
 		 }
 
 		$request = file_get_contents('php://input');
 		$res = json_decode($request,TRUE); 
-			 
-  		$this->category->title = "test";
-		$this->category->title_en = "test";
-		$this->category->keyword = "test";
-		$this->category->description = "test";
-		$this->category->hidden = '1';
-		echo $this->category->add(); 
+		 
+  		$this->category->title = $res['title'];
+		$this->category->title_en = $res['title_en'];
+		$this->category->keyword = $res['keyword'];
+		$this->category->description = $res['description'];
+		$this->category->hidden = $res['hidden'];
+		$arr['id'] =  $this->category->add();
+		 echo json_encode($arr);
+
   	}
 
   	public function actionEdite()
@@ -55,11 +60,16 @@ class CategoryController  extends AdminController
 	 
 	public function actionDelete()
 	{
-		$this->category->delet($id);  
+		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+		  exit();
+		 }
+		$request = file_get_contents('php://input');
+		$res = json_decode($request,TRUE); 
+		 
+		$this->category->delet($res['id']);  
 	}
 
 }
-
 
  
 

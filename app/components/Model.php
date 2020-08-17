@@ -35,11 +35,11 @@ class Model
 			 
 			 
 			 
-			echo  	$sql = "INSERT INTO   ". static::$table."
+			   	$sql = "INSERT INTO   ". static::$table."
 			 				 (". implode(',', $cols).")
 			 				 VALUES 
 			 				 (".implode(',', $ins).")"; 
-			 print_r($data);
+			 
 				$this->db->query($sql); 
 				$this->db->execute($data);  
 				return $this->db->LastInserId();

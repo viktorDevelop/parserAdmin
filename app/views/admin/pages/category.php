@@ -19,8 +19,8 @@
 						  </thead>
 						  <tbody>
 						  	<!-- class="table-warning" -->
-						    <tr v-for="items,index in category " >
-						      <td> {{items.id}}  </td>
+						    <tr v-for="items,index in category "  >
+						      <td @click='getEdit(items.id,index)' > {{items.id}}  </td>
 						      <td>{{items.title}} </td>
 						     
 					  		 
@@ -101,7 +101,7 @@
 
 									};
 					 
-						console.log(req);
+					 
 						  axios.post('/admin/category/add',req).then(response=>(
 						  		// this.id = response.data.id
 								this.category.push({'id':response.data.id,	
@@ -114,20 +114,7 @@
 														})
 
 						  	));
-
-// -                             .then(response => ( response.data)).catch(function(error){console.log(error)});
-// 					 // var catEdit   = _.find(this.category,{'id':id})
-// -                                       this.userEdit.push({'name':this.userName,
-// -                                                                               'famaly':this.userFamaly,
-// -                                                                               'sername':this.userSername,
-// -                                                                               'login':this.userLogin})
-// -                                       this.usersList.push({'name':this.userName,
-// -                                                                               'famaly':this.userFamaly,
-// -                                                                               'sername':this.userSername,
-// -                                                                               'login':this.userLogin})         
-// -                                       console.log(this.userEdit)
-// -                                         axios.post('/admin/category/add',this.userEdit)
-// -                             .then(response => ( response.data)).catch(function(error){console.log(error)});
+ 
  
 				},
 
@@ -138,8 +125,23 @@
 			      		.then(response => (response.data)).catch(function(error){console.log(error)});
 				},
 
-				showEdit(){
+				getEdit(id,index){
+						let cat =  this.category[index];
+						// console.log(cat.title); 
+						this.title = cat.title
+						this.title_en = cat.title_en
+						this.keyword = cat.keyword
+						this.description = cat.description
 
+						 axios.post('/admin/category/edite',{
+						 		'id':id,
+						 		'title':this.title,
+								'title_en':this.title_en,
+								'keyword':this.keyword,
+								'description':this.description
+						 })
+				      .then(response => (this.category = response.data)).catch(function(error){console.log(error)});
+						 
 				},
 
 				published(hidden){

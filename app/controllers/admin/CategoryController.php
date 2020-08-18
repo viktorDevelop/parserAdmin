@@ -20,18 +20,17 @@ class CategoryController  extends AdminController
 			  exit();
 			 }
 
-			// $request = file_get_contents('php://input');
-			// $res = json_decode($request,TRUE); 
+			
 			 $res =  $this->category->get();
 			 echo json_encode($res);
-			 // print_r($res);
+			 
 			 
 	}
   
   	public function actionAdd()
   	{	
 		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-		  header('location:/admin/');
+		 	exit();
 		 }
 
 		$request = file_get_contents('php://input');
@@ -49,13 +48,22 @@ class CategoryController  extends AdminController
 
   	public function actionEdite()
   	{
-  		$this->category->id = '5';
-  		$this->category->title = "fdsf";
-		$this->category->title_en = "tsadest";
-		$this->category->keyword = "sdfdsf";
-		$this->category->description = "sfdsa";
-		$this->category->hidden = '0';
-		echo $this->category->edite();  
+
+  		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+		 	exit();
+		 }
+
+		$request = file_get_contents('php://input');
+		$res = json_decode($request,TRUE); 
+
+		echo $request;
+  // 		$this->category->id = '5';
+  // 		$this->category->title = "fdsf";
+		// $this->category->title_en = "tsadest";
+		// $this->category->keyword = "sdfdsf";
+		// $this->category->description = "sfdsa";
+		// $this->category->hidden = '0';
+		// echo $this->category->edite();  
   	}
 	 
 	public function actionDelete()

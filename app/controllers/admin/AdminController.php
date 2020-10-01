@@ -14,14 +14,14 @@ class AdminController extends FrontController
 	{
 
 		
-		 // $this->checkAuth();
+		  $this->checkAuth();
 		 $this->template('indexView');
 		 
 	}
 
 	public function actionAuthForm($value='')
 	{
-		// $this->template('authForm'); 
+		
 		$this->view->load('admin/authForm');
 	}
 
@@ -65,7 +65,7 @@ class AdminController extends FrontController
 
 	 	}
 
-	 	if (!$this->auth->autorized() && $this->route['action']!=='auth') {
+	 	if (!$this->auth->autorized() ) {
 		 	 
 		 	header("location:/admin/");
 		 	exit;

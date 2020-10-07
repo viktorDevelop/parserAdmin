@@ -39,6 +39,14 @@
 							      <li class="nav-item" >
 							      	<a  class="nav-link" href="/admin/article/"> статьи  </a>
 							      </li>
+
+							      <li class="nav-item" >
+							      	<a  class="nav-link" href="/admin/article/"> настройки сайта  </a>
+							      </li>
+
+							      <li class="nav-item" >
+							      	<a  class="nav-link" href="/admin/article/">    выход   </a>
+							      </li>
 							   					    
 							</ul>
 						    <form class="form-inline my-2 my-lg-0">
